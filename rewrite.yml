@@ -1,0 +1,110 @@
+---
+type: specs.openrewrite.org/v1beta/recipe
+name: org.openrewrite.recommendations.CodeHealth
+displayName: Code Health
+description: Used for Code Health metric on moderne radar.
+tags:
+  - health check
+  - radar
+recipeList:
+  #   - org.openrewrite.java.cleanup.NoDoubleBraceInitialization
+  #   - org.openrewrite.java.cleanup.CaseInsensitiveComparisonsDoNotChangeCase
+  #   - org.openrewrite.java.cleanup.EqualsAvoidsNull
+  #   - org.openrewrite.java.cleanup.UseDiamondOperator
+  - org.openrewrite.java.RemoveUnusedImports
+#   - org.openrewrite.java.NoStaticImport
+---
+type: specs.openrewrite.org/v1beta/recipe
+name: org.openrewrite.recommendations.CodeStyle
+displayName: Code Style
+description: Used for Code Style metric on moderne radar.
+tags:
+  - health check
+  - radar
+recipeList:
+  # - org.openrewrite.java.format.AutoFormat
+#   - org.openrewrite.java.format.BlankLines
+#   - org.openrewrite.java.format.RemoveTrailingWhitespace
+  #   - org.openrewrite.java.format.WrappingAndBraces
+  #   - org.openrewrite.java.cleanup.UseJavaStyleArrayDeclarations
+  # - org.openrewrite.xml.AutoFormat
+  # - org.openrewrite.hcl.format.AutoFormat
+  #   - org.openrewrite.java.cleanup.UnnecessaryParentheses
+  #   - org.openrewrite.java.cleanup.RemoveExtraSemicolons
+  #   - org.openrewrite.java.cleanup.RemoveRedundantTypeCast
+  #   - org.openrewrite.java.cleanup.RemoveUnneededAssertion
+  #   - org.openrewrite.java.cleanup.RemoveUnneededBlock
+  - org.openrewrite.java.cleanup.RemoveUnusedLocalVariables
+  - org.openrewrite.java.cleanup.RemoveUnusedPrivateFields
+  - org.openrewrite.java.cleanup.RemoveUnusedPrivateMethods
+  #   - org.openrewrite.java.cleanup.RenameExceptionInEmptyCatch
+  - org.openrewrite.java.cleanup.RenameLocalVariablesToCamelCase
+  - org.openrewrite.java.cleanup.RenamePrivateFieldsToCamelCase
+  - org.openrewrite.java.cleanup.LowercasePackage
+  - org.openrewrite.java.cleanup.MethodNameCasing
+  #   - org.openrewrite.java.cleanup.MethodParamPad
+  - org.openrewrite.java.ChangePackage:
+      oldPackageName: com.microservices.account.access.consents
+      newPackageName: com.openbanking.account.access.consents
+      recursive: true
+  - org.openrewrite.java.ChangePackage:
+      oldPackageName: com.microservices.accounts
+      newPackageName: com.openbanking.accounts
+      recursive: true
+  - org.openrewrite.java.ChangePackage:
+      oldPackageName: com.microservices.balances
+      newPackageName: com.openbanking.balances
+      recursive: true
+  - org.openrewrite.java.ChangePackage:
+      oldPackageName: com.microservices.transactions
+      newPackageName: com.openbanking.transactions
+      recursive: true
+  - org.openrewrite.java.ChangePackage:
+      oldPackageName: com.microservices.beneficiaries
+      newPackageName: com.openbanking.beneficiaries
+      recursive: true
+  - org.openrewrite.java.ChangePackage:
+      oldPackageName: com.microservices.direct.debits
+      newPackageName: com.openbanking.direct.debits
+      recursive: true
+  - org.openrewrite.java.ChangePackage:
+      oldPackageName: com.microservices.standing.orders
+      newPackageName: com.openbanking.standing.orders
+      recursive: true
+  - org.openrewrite.java.ChangePackage:
+      oldPackageName: com.microservices.products
+      newPackageName: com.openbanking.products
+      recursive: true
+  - org.openrewrite.java.ChangePackage:
+      oldPackageName: com.microservices.offers
+      newPackageName: com.openbanking.offers
+      recursive: true
+  - org.openrewrite.java.ChangePackage:
+      oldPackageName: com.microservices.parties
+      newPackageName: com.openbanking.parties
+      recursive: true
+  - org.openrewrite.java.ChangePackage:
+      oldPackageName: com.microservices.scheduled.payments
+      newPackageName: com.openbanking.scheduled.payments
+      recursive: true
+  - org.openrewrite.java.ChangePackage:
+      oldPackageName: com.microservices.statements
+      newPackageName: com.openbanking.statements
+      recursive: true
+  - org.openrewrite.yaml.format.Indents
+---
+type: specs.openrewrite.org/v1beta/recipe
+name: org.openrewrite.recommendations.DependencyManagement
+displayName: Dependency Management
+description: Used for Dependency Management metric on moderne radar.
+tags:
+  - health check
+  - radar
+recipeList:
+  - org.openrewrite.maven.RemoveDuplicateDependencies
+#   - org.openrewrite.maven.RemoveRedundantDependencyVersions
+  - org.openrewrite.maven.AddPlugin:
+      groupId: org.springdoc
+      artifactId: springdoc-openapi-maven-plugin
+      version: 1.4
+      executions: <executions><execution><id>integration-test</id><goals><goal>generate</goal></goals></execution></executions>

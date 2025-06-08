@@ -1,0 +1,5 @@
+org.openrewrite.java.IntelliJ
+org.openrewrite.java.GoogleJavaFormat
+com.netflix.genie.Style
+org.openrewrite.java.SpringFormat
+com.netflix.eureka.Style

@@ -1,0 +1,124 @@
+openapi: 3.1.0
+info:
+  title: OpenAPI definition
+  version: v0
+servers:
+- url: http://localhost:8080
+  description: Generated server url
+tags:
+- name: direct-debits
+  description: direct-debits
+- name: accounts
+  description: accounts
+paths:
+  /direct-debits:
+    get:
+      tags:
+      - Direct Debits
+      - direct-debits
+      summary: Get Direct Debits
+      operationId: getDirectDebits
+      parameters:
+      - name: An Authorisation Token as per https://tools.ietf.org/html/rfc6750
+        in: header
+        required: true
+        schema:
+          type: string
+      - name: "The time when the PSU last logged in with the TPP.  All dates in the\
+          \ HTTP headers are represented as RFC 7231 Full Dates. An example is below:\
+          \  Sun, 10 Sep 2017 19:43:31 UTC"
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: The PSU's IP address if the PSU is currently logged in with the TPP.
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: An RFC4122 UID used as a correlation id.
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: Indicates the user-agent that the PSU is using.
+        in: header
+        required: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/OBReadDirectDebit2"
+            application/json:
+              schema:
+                $ref: "#/components/schemas/OBReadDirectDebit2"
+            application/jose+jwe:
+              schema:
+                $ref: "#/components/schemas/OBReadDirectDebit2"
+            application/json; charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/OBReadDirectDebit2"
+  /accounts/{AccountId}/direct-debits:
+    get:
+      tags:
+      - Direct Debits
+      - accounts
+      summary: Get Direct Debits
+      operationId: getAccountsAccountIdDirectDebits
+      parameters:
+      - name: AccountId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: An Authorisation Token as per https://tools.ietf.org/html/rfc6750
+        in: header
+        required: true
+        schema:
+          type: string
+      - name: "The time when the PSU last logged in with the TPP.  All dates in the\
+          \ HTTP headers are represented as RFC 7231 Full Dates. An example is below:\
+          \  Sun, 10 Sep 2017 19:43:31 UTC"
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: The PSU's IP address if the PSU is currently logged in with the TPP.
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: An RFC4122 UID used as a correlation id.
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: Indicates the user-agent that the PSU is using.
+        in: header
+        required: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/OBReadDirectDebit2"
+            application/json:
+              schema:
+                $ref: "#/components/schemas/OBReadDirectDebit2"
+            application/jose+jwe:
+              schema:
+                $ref: "#/components/schemas/OBReadDirectDebit2"
+            application/json; charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/OBReadDirectDebit2"
+components:
+  schemas:
+    OBReadDirectDebit2:
+      type: object

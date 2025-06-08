@@ -1,0 +1,47 @@
+spring:
+  application:
+    name: direct-debits-services
+  profiles:
+    active: "dev"
+  jmx:
+    enabled: false
+
+debug: false
+server:
+  port: 8080
+
+management:
+
+  server:
+    port: 8080
+  endpoints:
+    enabled-by-default: true
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
+  info:
+    defaults:
+      enabled: true
+    git:
+      enabled: true
+      mode: full
+    env:
+      enabled: true
+    build:
+      enabled: true
+springdoc:
+
+  swagger-ui:
+    display-request-duration: true
+    groups-order: DESC
+    operationsSorter: method
+    disable-swagger-default-url: true
+    use-root-path: true
+  show-actuator: false
+artifact:
+  groupId: '@project.groupId@'
+  artifactId: '@project.artifactId@'
+  version: '@project.version@'  
