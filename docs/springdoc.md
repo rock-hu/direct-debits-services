@@ -1,7 +1,7 @@
-# springdoc 
+# springdoc
 
+## springdoc-openapi-maven-plugin
 
-## springdoc-openapi-maven-plugin    
 ```xml
 <plugin>
     <groupId>org.springdoc</groupId>
@@ -17,3 +17,4 @@
     </executions>
 </plugin>
 ```
+

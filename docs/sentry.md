@@ -1,4 +1,4 @@
-# sentry    
+# sentry
 
 ```bash
 account-access-consents-services
@@ -15,7 +15,8 @@ scheduled-payments-services
 statements-services
 ```
 
-## SentryExceptionResolver  
+## SentryExceptionResolver
+
 ```java
 package io.sentry.spring;
 
@@ -108,3 +109,4 @@ public class SentryExceptionResolver implements HandlerExceptionResolver, Ordere
   }
 }
 ```
+

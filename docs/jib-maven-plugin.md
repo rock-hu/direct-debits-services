@@ -1,5 +1,4 @@
-# jib-maven-plugin  
-
+# jib-maven-plugin
 
 ```xml
 <plugin>
@@ -8,13 +7,10 @@
 </plugin>
 ```
 
-
 ```bash
 mvn compile jib:build
 mvn -X -Djib.serialize=true compile jib:build
 ```
-
-
 
 ```bash
 sudo docker login registry.gitlab.com
@@ -27,3 +23,4 @@ sudo docker build -t registry.gitlab.com/internal-developer-platform/openbanking
 ```bash
 sudo docker push registry.gitlab.com/internal-developer-platform/openbanking-payments
 ```
+

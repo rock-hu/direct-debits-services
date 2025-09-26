@@ -1,4 +1,4 @@
-# plop    
+# plop
 
 `plop --help`
 
@@ -28,3 +28,4 @@ Options:
 ```bash
 plop change-package --artifact ---package 
 ```
+

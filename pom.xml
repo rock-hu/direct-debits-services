@@ -280,6 +280,32 @@
                     <artifactId>spotless-maven-plugin</artifactId>
                     <version>${maven.spotless.plugin.version}</version>
                     <configuration>
+                        <markdown>
+                            <includes>
+                                <include>*.md</include>
+                                <include>docs/*.md</include>
+                                <include>docs/**/*.md</include>
+                            </includes>
+                            <flexmark></flexmark>
+                        </markdown>
+                        <yaml>
+                            <includes>
+                                <include>src/main/resources/*.yaml</include>
+                                <include>src/main/resources/*.yml</include>
+                            </includes>
+                            <jackson>
+                                <version>2.14.1</version>
+                                <features>
+                                    <INDENT_OUTPUT>true</INDENT_OUTPUT>
+                                    <ORDER_MAP_ENTRIES_BY_KEYS>false</ORDER_MAP_ENTRIES_BY_KEYS>
+                                </features>
+                                <yamlFeatures>
+                                    <WRITE_DOC_START_MARKER>true</WRITE_DOC_START_MARKER>
+                                    <MINIMIZE_QUOTES>false</MINIMIZE_QUOTES>
+                                </yamlFeatures>
+                                <spaceBeforeSeparator>false</spaceBeforeSeparator>
+                            </jackson>
+                        </yaml>
                         <formats>
                             <format>
                                 <includes>
@@ -481,6 +507,10 @@
                 <artifactId>maven-site-plugin</artifactId>
             </plugin>
             <plugin>
+                <groupId>org.cyclonedx</groupId>
+                <artifactId>cyclonedx-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
                 <groupId>org.graalvm.buildtools</groupId>
                 <artifactId>native-maven-plugin</artifactId>
             </plugin>
@@ -521,10 +551,10 @@
                     <fork>false</fork>
                     <mainClass>com.openbanking.direct.debits.Application</mainClass>
                     <jvmArguments>-Dspring.application.admin.enabled=true
-            -Xms128m
-            -Xmx256m
-            -XX:+FlightRecorder
-            -XX:StartFlightRecording=duration=5s,filename=${project.artifactId}.jfr</jvmArguments>
+                        -Xms128m
+                        -Xmx256m
+                        -XX:+FlightRecorder
+                        -XX:StartFlightRecording=duration=5s,filename=${project.artifactId}.jfr</jvmArguments>
                     <excludes>
                         <exclude>
                             <groupId>org.projectlombok</groupId>
