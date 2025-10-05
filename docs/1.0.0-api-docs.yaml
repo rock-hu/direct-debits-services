@@ -120,5 +120,4 @@ paths:
                 $ref: "#/components/schemas/OBReadDirectDebit2"
 components:
   schemas:
-    OBReadDirectDebit2:
-      type: object
+    OBReadDirectDebit2: {}
